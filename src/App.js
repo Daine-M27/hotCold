@@ -32,6 +32,7 @@ export default class App extends React.Component {
         console.log(guess, difference, this.state.randomNumber)
 
         let readout;
+        let answer = this.state.randomNumber;
 
         if (difference >= 15) {
             readout = 'Cold';
@@ -44,8 +45,8 @@ export default class App extends React.Component {
             readout = 'Getting Hot!';
         }
         else {
-            alert('Correct, click OK to start a new game!');
-            this.newGame();
+            readout = "You're on Fire, Correct Answer was: "+ answer +  ", Click New Game";
+
         }
 
         this.setState({
@@ -62,7 +63,7 @@ export default class App extends React.Component {
            onGuess={(guess) => this.guess(guess)} />
         <br />
         {/*<input type="button" value="New Game" onClick={(this.newGame())}/>*/}
-
+        <button type="button" value="New Game" onClick={() => { this.newGame() }}>New Game</button>
       </div>
     );
   }
